@@ -1,0 +1,34 @@
+<input
+  [type]="type"
+  class="block w-full py-1.5 px-3 text-gray-200 border border-gray-400 transition duration-500 focus:outline-none rounded bg-transparent focus:border-indigo-400"
+  [placeholder]="placeholder"
+  [formControl]="control"
+  [mask]="format"
+/>
+<ng-container *ngIf="control.touched && control.dirty">
+  <p *ngIf="control.errors?.required" class="text-red-400">Field is required</p>
+  <p *ngIf="control.errors?.minlength" class="text-red-400">
+    The Value you inputted is
+    {{ control.errors?.minlength.actualLength }}
+    character long. It must be atleast
+    {{ control.errors?.minlength.requiredLength }}
+    character long.
+  </p>
+  <p *ngIf="control.errors?.min" class="text-red-400">
+    The Value you inputted should be greater than
+    {{ control.errors?.min.min }}
+  </p>
+  <p *ngIf="control.errors?.max" class="text-red-400">
+    The Value you inputted should be less than
+    {{ control.errors?.max.max }}.
+  </p>
+  <p *ngIf="control.errors?.email" class="text-red-400">
+    Please Enter Valid Email.
+  </p>
+  <p *ngIf="control.errors?.pattern" class="text-red-400">
+    Please valid Character.
+    <!-- console.log(control.errors?.pattern) -->
+    <!-- {{ console.log(control.errors?.pattern)}} -->
+    
+  </p>
+</ng-container>
